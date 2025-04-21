@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\visitor-icon.png" />
+    <None Remove="Resources\admin-icon.png" />
+    <None Remove="Resources\back-icon.png" />
+    <None Remove="Resources\barrier-icon.png" />
+    <None Remove="Resources\calendar-icon.png" />
+    <None Remove="Resources\clock-icon.png" />
+    <None Remove="Resources\default-user.png" />
+    <None Remove="Resources\employee-icon.png" />
+    <None Remove="Resources\home-icon.png" />
+    <None Remove="Resources\logo.png" />
+    <None Remove="Resources\rfid-icon.png" />
+    <None Remove="Resources\settings-icon.png" />
+    <None Remove="Resources\student-icon.png" />
+    <None Remove="Resources\visitor-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pages\visitor-icon.png" />
+    <Resource Include="Resources\admin-icon.png" />
+    <Resource Include="Resources\back-icon.png" />
+    <Resource Include="Resources\barrier-icon.png" />
+    <Resource Include="Resources\calendar-icon.png" />
+    <Resource Include="Resources\clock-icon.png" />
+    <Resource Include="Resources\default-user.png" />
+    <Resource Include="Resources\employee-icon.png" />
+    <Resource Include="Resources\home-icon.png" />
+    <Resource Include="Resources\logo.png" />
+    <Resource Include="Resources\rfid-icon.png" />
+    <Resource Include="Resources\settings-icon.png" />
+    <Resource Include="Resources\student-icon.png" />
+    <Resource Include="Resources\user-icon.png" />
+    <Resource Include="Resources\visitor-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

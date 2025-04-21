@@ -1,0 +1,167 @@
+﻿<Page x:Class="MSUAccessControlSystem.DashboardPage"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Dashboard Title -->
+        <TextBlock Grid.Row="0" Text="TODAY'S ENTRIES" 
+                     FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <!-- Statistics Cards -->
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Students Card -->
+            <Border Grid.Column="0" Background="White" CornerRadius="10" Margin="0,0,10,0">
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock x:Name="StudentCountText" Text="165" 
+                                     FontSize="36" FontWeight="Bold"/>
+                        <TextBlock Text="Students" FontSize="16" Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <Border Grid.Column="1" Background="#E8F5E9" CornerRadius="30" 
+                              Width="60" Height="60" VerticalAlignment="Center">
+                        <Image Source="../Resources/student-icon.png" Width="30" Height="30"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Employees Card -->
+            <Border Grid.Column="1" Background="White" CornerRadius="10" Margin="5,0">
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock x:Name="EmployeeCountText" Text="23" 
+                                     FontSize="36" FontWeight="Bold"/>
+                        <TextBlock Text="Employees" FontSize="16" Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <Border Grid.Column="1" Background="#E3F2FD" CornerRadius="30" 
+                              Width="60" Height="60" VerticalAlignment="Center">
+                        <Image Source="../Resources/employee-icon.png" Width="30" Height="30"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Visitors Card -->
+            <Border Grid.Column="2" Background="White" CornerRadius="10" Margin="10,0,0,0">
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock x:Name="VisitorCountText" Text="4" 
+                                     FontSize="36" FontWeight="Bold"/>
+                        <TextBlock Text="Visitors" FontSize="16" Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <Border Grid.Column="1" Background="#FFF3E0" CornerRadius="30" 
+                              Width="60" Height="60" VerticalAlignment="Center">
+                        <Image Source="../Resources/visitor-icon.png" Width="30" Height="30"/>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Currently Inside & Recent Logs -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Currently Inside -->
+            <Border Grid.Column="0" Background="White" CornerRadius="10" Margin="0,0,10,0">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="CURRENTLY INSIDE" 
+                                 FontSize="16" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock x:Name="InsideCountText" Text="192" 
+                                     FontSize="60" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="People" FontSize="16" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Recent Logs -->
+            <Border Grid.Column="1" Background="White" CornerRadius="10" Margin="10,0,0,0">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Image Source="../Resources/clock-icon.png" Width="24" Height="24" Margin="0,0,10,0"/>
+                        <TextBlock Text="RECENT LOGS" FontSize="16" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <ListView x:Name="RecentLogsListView" Grid.Row="1" Margin="0,15,0,0"
+                                Style="{StaticResource DataListView}"
+                                ItemContainerStyle="{StaticResource DataListViewItem}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="TIME" Width="150"
+                                                  DisplayMemberBinding="{Binding TimeStamp, StringFormat='{}{0:h:mm tt - MM/dd/yyyy}'}"/>
+                                <GridViewColumn Header="ID NUMBER" Width="100"
+                                                  DisplayMemberBinding="{Binding IDNumber}"/>
+                                <GridViewColumn Header="NAME" Width="150"
+                                                  DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="DEPARTMENT" Width="100"
+                                                  DisplayMemberBinding="{Binding Department}"/>
+                                <GridViewColumn Header="USER TYPE" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{Binding UserType, Converter={StaticResource UserTypeColorConverter}}"
+                                                      CornerRadius="12" Padding="8,3">
+                                                <TextBlock Text="{Binding UserType}" Foreground="White" FontSize="11"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="EVENT TYPE" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{Binding EventType, Converter={StaticResource EventTypeColorConverter}}"
+                                                      CornerRadius="12" Padding="8,3">
+                                                <TextBlock Text="{Binding EventType}" Foreground="White" FontSize="11"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
+ 

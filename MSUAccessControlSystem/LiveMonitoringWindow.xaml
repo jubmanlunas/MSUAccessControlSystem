@@ -1,0 +1,120 @@
+﻿<Window x:Class="MSUAccessControlSystem.LiveMonitoringWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            Title="Live Monitoring - MSU Access Control System" 
+            Height="400" Width="600"
+            WindowStartupLocation="CenterScreen">
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0" Background="{StaticResource PrimaryBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="LIVE MONITORING" 
+                         FontSize="18" FontWeight="Bold" Foreground="White"
+                         VerticalAlignment="Center" Margin="20,0"/>
+
+            <Button Grid.Column="1" Content="⤢" FontSize="18" FontWeight="Bold"
+                      Background="Transparent" Foreground="White" BorderThickness="0"
+                      Width="40" Height="40" Margin="0,0,10,0"/>
+        </Grid>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- User Photo -->
+            <Border Grid.Column="0" Width="200" Height="200" Background="White" 
+                      CornerRadius="10" Margin="0,0,20,0">
+                <Grid>
+                    <Image x:Name="UserPhoto" Width="180" Height="180" 
+                             Source="/Resources/default-user.png"/>
+
+                    <!-- User Type Badge -->
+                    <Border x:Name="StudentBadge" Background="#4CAF50" CornerRadius="15"
+                              HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"
+                              Padding="10,5" Visibility="Collapsed">
+                        <TextBlock Text="Student" Foreground="White" FontSize="12" FontWeight="SemiBold"/>
+                    </Border>
+
+                    <Border x:Name="EmployeeBadge" Background="#2196F3" CornerRadius="15"
+                              HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"
+                              Padding="10,5" Visibility="Collapsed">
+                        <TextBlock Text="Employee" Foreground="White" FontSize="12" FontWeight="SemiBold"/>
+                    </Border>
+
+                    <Border x:Name="VisitorBadge" Background="#FF9800" CornerRadius="15"
+                              HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"
+                              Padding="10,5" Visibility="Collapsed">
+                        <TextBlock Text="Visitor" Foreground="White" FontSize="12" FontWeight="SemiBold"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- User Info -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Entry/Exit Badge -->
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Border x:Name="EntryBadge" Background="#FFEB3B" CornerRadius="15"
+                              Padding="15,5" Margin="0,0,10,10">
+                        <TextBlock Text="ENTRY" Foreground="#212121" FontSize="14" FontWeight="Bold"/>
+                    </Border>
+
+                    <Border x:Name="ExitBadge" Background="#F44336" CornerRadius="15"
+                              Padding="15,5" Margin="0,0,0,10" Visibility="Collapsed">
+                        <TextBlock Text="EXIT" Foreground="White" FontSize="14" FontWeight="Bold"/>
+                    </Border>
+                </StackPanel>
+
+                <!-- User Details -->
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="{Binding UserName}" FontSize="24" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBlock Text="{Binding UserID}" FontSize="18" Margin="0,0,0,10"/>
+
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Department:" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="1" Text="{Binding UserDepartment}"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="User Type:" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="1" Text="{Binding UserType}"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Time:" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="1" Text="{Binding EventTime}"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
+    

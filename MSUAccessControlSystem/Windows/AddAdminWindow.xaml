@@ -1,0 +1,61 @@
+﻿<Window x:Class="MSUAccessControlSystem.AddAdminWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            Title="Add Administrator - MSU Access Control System" 
+            Height="450" Width="500"
+            WindowStartupLocation="CenterScreen">
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0" Background="{StaticResource PrimaryBrush}">
+            <TextBlock Text="Add Administrator" FontSize="18" FontWeight="Bold" 
+                         Foreground="White" VerticalAlignment="Center" Margin="20,0"/>
+        </Grid>
+
+        <!-- Form -->
+        <StackPanel Grid.Row="1" Margin="30,20">
+            <!-- RFID UID -->
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="RFID UID (Tap ID on the reader)" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <TextBox x:Name="RFIDTextBox" Style="{StaticResource StandardTextBox}"
+                           GotFocus="RFIDTextBox_GotFocus"/>
+            </StackPanel>
+
+            <!-- Username -->
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="Username" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <TextBox x:Name="UsernameTextBox" Style="{StaticResource StandardTextBox}"/>
+            </StackPanel>
+
+            <!-- Password -->
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="Password" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <PasswordBox x:Name="PasswordBox" Padding="8,6"/>
+            </StackPanel>
+
+            <!-- Confirm Password -->
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="Confirm Password" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <PasswordBox x:Name="ConfirmPasswordBox" Padding="8,6"/>
+            </StackPanel>
+
+            <!-- Role -->
+            <StackPanel>
+                <TextBlock Text="Role" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <ComboBox x:Name="RoleComboBox" Style="{StaticResource StandardComboBox}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Save Button -->
+        <Button Grid.Row="2" x:Name="SaveButton" Content="Save" 
+                  Style="{StaticResource SuccessButton}"
+                  Click="SaveButton_Click" Width="120" Margin="0,0,30,20"
+                  HorizontalAlignment="Right"/>
+    </Grid>
+</Window>
+    
